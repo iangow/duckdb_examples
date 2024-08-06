@@ -1,0 +1,14 @@
+library(tidyverse)
+library(DBI)
+
+db <- dbConnect(duckdb::duckdb())
+
+dbExecute(db, "IMPORT DATABASE 'ch03/ch03_db'")
+
+dbListTables(db)
+
+systems <- tbl(db, "systems")
+readings <- tbl(db, "readings")
+prices <- tbl(db, "prices")
+
+prices
